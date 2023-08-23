@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Uploader</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Image Uploader</h1>
+  <input type="file" id="fileInput">
+  <button onclick="uploadImage()">Upload</button>
+  <div id="preview"></div>
+
+ 
+<style type="text/css">
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+#preview {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#preview img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius:50%;
+}
+</style>
+
+<script src="script.js"></script>
+<script type="text/javascript">
+function uploadImage() {
+  var fileInput = document.getElementById('fileInput');
+  var preview = document.getElementById('preview');
+
+  var file = fileInput.files[0];
+  var reader = new FileReader();
+
+  reader.onloadend = function() {
+    var img = document.createElement('img');
+    img.src = reader.result;
+    preview.appendChild(img);
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.innerHTML = "No image selected";
+  }
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Uploader</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Audio Uploader</h1>
+  <input type="file" id="fileInput" accept="audio/*">
+  <button onclick="uploadAudio()">Upload</button>
+  <div id="preview"></div>
+
+  <style type="text/css">
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="file"] {
+  display: block;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+}
+
+#preview {
+  margin-top: 20px;
+  text-align: center;
+}
+</style>
+
+<script src="script.js"></script>
+<script type="text/javascript">
+function uploadAudio() {
+  var fileInput = document.getElementById('fileInput');
+  var preview = document.getElementById('preview');
+
+  var file = fileInput.files[0];
+  var reader = new FileReader();
+
+  reader.onloadend = function() {
+    var audio = document.createElement('audio');
+    audio.src = reader.result;
+    audio.controls = true;
+    preview.appendChild(audio);
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  } else {
+    preview.innerHTML = "No audio selected";
+  }
+}
+</script>
+</body>
+</html>
+
